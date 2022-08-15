@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.MainActivity">
+
+
+    <ImageView
+        android:id="@+id/home_clan_bord"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/icon_home_clean_bord"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <com.zjf.clear.ui.widget.HomeCleanView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:layout_constraintBottom_toBottomOf="@id/home_clan_bord"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/home_clan_bord" />
+
+    <TextView
+        android:id="@+id/tv_clean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clean"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/home_clan_bord"
+        app:layout_constraintEnd_toEndOf="@id/home_clan_bord"
+        app:layout_constraintStart_toStartOf="@id/home_clan_bord"
+        app:layout_constraintTop_toTopOf="@id/home_clan_bord" />
+
+    <TextView
+        android:id="@+id/btn_booster"
+        style="@style/HomeButton"
+        android:layout_marginTop="150dp"
+        android:text="@string/phone_booster"
+        app:drawableTopCompat="@drawable/icon_home_btn_booster"
+        app:layout_constraintEnd_toStartOf="@id/btn_battery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_clan_bord" />
+
+    <TextView
+        android:id="@+id/btn_battery"
+        style="@style/HomeButton"
+        android:text="@string/battery"
+        app:drawableTopCompat="@drawable/icon_home_btn_battery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_booster"
+        app:layout_constraintTop_toTopOf="@id/btn_booster" />
+
+    <TextView
+        android:id="@+id/btn_cpu"
+        style="@style/HomeButton"
+        android:layout_marginTop="20dp"
+        android:text="@string/cpu_cooler"
+        app:drawableTopCompat="@drawable/icon_home_btn_cpu"
+        app:layout_constraintEnd_toStartOf="@id/btn_gallery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_booster" />
+
+    <TextView
+        android:id="@+id/btn_gallery"
+        style="@style/HomeButton"
+        android:text="@string/photo_clean"
+        app:drawableTopCompat="@drawable/icon_home_btn_gallery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_cpu"
+        app:layout_constraintTop_toTopOf="@id/btn_cpu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

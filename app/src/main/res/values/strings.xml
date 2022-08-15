@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Clear</string>
+
+    <string name="clean">Clean</string>
+    <string name="phone_booster">Phone Booster</string>
+    <string name="battery">Battery</string>
+    <string name="cpu_cooler">CPU Cooler</string>
+    <string name="photo_clean">Photo Clean</string>
+</resources>
