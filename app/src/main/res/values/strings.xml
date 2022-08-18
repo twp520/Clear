@@ -6,4 +6,6 @@
     <string name="battery">Battery</string>
     <string name="cpu_cooler">CPU Cooler</string>
     <string name="photo_clean">Photo Clean</string>
+    <string name="result_text">The running speed has been increased</string>
+    <string name="scanning_garbage">Scanning garbage...</string>
 </resources>

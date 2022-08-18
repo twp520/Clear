@@ -25,7 +25,7 @@ class WelcomeActivity : BaseActivity<ActivityWelcomeBinding, WelcomeViewModel>()
         lifecycleScope.launchWhenStarted {
             mViewModel.uiState.collect {
                 if (it.isInitComplete)
-                    launchActivity(MainActivity::class.java)
+                    launchActivity(MainActivity::class.java, finish = true)
             }
         }
 

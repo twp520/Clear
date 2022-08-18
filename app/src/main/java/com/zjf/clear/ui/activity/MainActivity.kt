@@ -24,6 +24,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, EmptyViewModel>(), View.O
         binding.btnBattery.setOnClickListener(this)
         binding.btnCpu.setOnClickListener(this)
         binding.btnGallery.setOnClickListener(this)
+        binding.homeClanBord.setOnClickListener(this)
     }
 
     override fun setupData() {
@@ -47,6 +48,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, EmptyViewModel>(), View.O
         when (v.id) {
             R.id.btn_booster -> {
                 launchActivity(PhoneBoosterAct::class.java)
+            }
+            R.id.home_clan_bord -> {
+                launchActivity(CleanActivity::class.java)
             }
         }
 
