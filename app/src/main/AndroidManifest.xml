@@ -23,6 +23,8 @@
         <activity android:name=".ui.activity.PhoneBoosterAct" />
         <activity android:name=".ui.activity.CleanActivity" />
         <activity android:name=".ui.activity.ResultActivity" />
+        <activity android:name=".ui.activity.BatteryActivity" />
+        <activity android:name=".ui.activity.CPUActivity" />
 
     </application>
 

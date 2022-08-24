@@ -11,6 +11,7 @@ import com.beeline.common.BaseActivity
 import com.beeline.common.launchActivity
 import com.zjf.clear.data.Constant
 import com.zjf.clear.databinding.ActivityCleanBinding
+import com.zjf.clear.launchResultActivity
 import com.zjf.clear.ui.viewmodel.CleanViewModel
 import kotlinx.coroutines.flow.collect
 
@@ -43,11 +44,7 @@ class CleanActivity : BaseActivity<ActivityCleanBinding, CleanViewModel>() {
         lifecycleScope.launchWhenStarted {
             mViewModel.uiState.collect {
                 if (it.isComplete) {
-                    launchActivity(
-                        ResultActivity::class.java,
-                        bundleOf(Pair("funcId", Constant.ID_CLEAN)),
-                        true
-                    )
+                    launchResultActivity(Constant.ID_CLEAN)
                 } else {
                     binding.tvUnit.text = it.unit
                     startTextAnimated(it.size)

@@ -1,5 +1,7 @@
 package com.zjf.clear.ui.adapter
 
+import android.view.View
+import com.blankj.utilcode.util.LogUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.zjf.clear.R
@@ -17,6 +19,9 @@ class ResultAdapter : BaseQuickAdapter<ResultItemUiState, BaseViewHolder>(R.layo
         holder.setText(R.id.item_result_name, item.displayName)
         holder.setText(R.id.item_result_desc, item.descriptor)
         holder.setText(R.id.item_result_button, item.buttonText)
-        addChildClickViewIds(R.id.item_result_button)
+        holder.getView<View>(R.id.item_result_button).setOnClickListener {
+           getOnItemChildClickListener()?.onItemChildClick(this,it,holder.adapterPosition-headerLayoutCount)
+        }
+
     }
 }

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.beeline.common.BaseActivity
 import com.beeline.common.launchActivity
 import com.blankj.utilcode.util.BarUtils
+import com.blankj.utilcode.util.LogUtils
 import com.zjf.clear.R
 import com.zjf.clear.databinding.ActivityResultBinding
 import com.zjf.clear.ui.adapter.ResultAdapter
@@ -25,14 +26,23 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
 
     override fun setupView() {
 
-        binding.resultRv.layoutManager = LinearLayoutManager(this)
-        binding.resultRv.adapter = mAdapter
-
-        val header = layoutInflater.inflate(R.layout.header_result, binding.resultRv, false)
-        mAdapter.addHeaderView(header)
-
         BarUtils.setStatusBarColor(this, Color.parseColor("#EBF5FE"))
         BarUtils.setStatusBarLightMode(this, true)
+
+
+        binding.resultRv.layoutManager = LinearLayoutManager(this)
+        mAdapter.recyclerView = binding.resultRv
+
+
+        mAdapter.setOnItemChildClickListener { _, view, position ->
+            if (view.id == R.id.item_result_button) {
+                launchActivity(mAdapter.getItem(position).jumpClass, finish = true)
+            }
+        }
+
+        binding.resultRv.adapter = mAdapter
+        val header = layoutInflater.inflate(R.layout.header_result, binding.resultRv, false)
+        mAdapter.addHeaderView(header)
     }
 
     override fun setupEvent() {
@@ -41,11 +51,7 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
             onBackPressed()
         }
 
-        mAdapter.setOnItemChildClickListener { _, view, position ->
-            if (view.id == R.id.item_result_button) {
-                launchActivity(mAdapter.getItem(position).jumpClass, finish = true)
-            }
-        }
+
 
     }
 

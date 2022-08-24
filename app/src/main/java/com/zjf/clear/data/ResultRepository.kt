@@ -2,6 +2,7 @@ package com.zjf.clear.data
 
 import android.content.Context
 import com.zjf.clear.R
+import com.zjf.clear.ui.activity.BatteryActivity
 import com.zjf.clear.ui.activity.CleanActivity
 import com.zjf.clear.ui.activity.PhoneBoosterAct
 import com.zjf.clear.ui.state.ResultItemUiState
@@ -44,7 +45,7 @@ class ResultRepository {
                 context.getString(R.string.battery),
                 context.getString(R.string.battery),
                 context.getString(R.string.battery),
-                CleanActivity::class.java
+                BatteryActivity::class.java
             ), ResultItemUiState(
                 Constant.ID_GALLERY,
                 R.drawable.icon_item_result_gallery,

@@ -52,6 +52,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, EmptyViewModel>(), View.O
             R.id.home_clan_bord -> {
                 launchActivity(CleanActivity::class.java)
             }
+            R.id.btn_battery -> {
+                launchActivity(BatteryActivity::class.java)
+            }
+            R.id.btn_cpu -> {
+                launchActivity(CPUActivity::class.java)
+            }
         }
 
     }
