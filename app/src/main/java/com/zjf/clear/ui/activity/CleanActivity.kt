@@ -5,10 +5,8 @@ import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
 import android.view.animation.RotateAnimation
 import androidx.activity.viewModels
-import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import com.beeline.common.BaseActivity
-import com.beeline.common.launchActivity
 import com.zjf.clear.data.Constant
 import com.zjf.clear.databinding.ActivityCleanBinding
 import com.zjf.clear.launchResultActivity

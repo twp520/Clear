@@ -1,7 +1,8 @@
-package com.zjf.clear.data
+package com.zjf.clear.data.repository
 
 import android.content.Context
 import com.zjf.clear.R
+import com.zjf.clear.data.Constant
 import com.zjf.clear.ui.activity.BatteryActivity
 import com.zjf.clear.ui.activity.CleanActivity
 import com.zjf.clear.ui.activity.PhoneBoosterAct

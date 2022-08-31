@@ -7,16 +7,16 @@ import com.beeline.common.BaseActivity
 import com.zjf.clear.data.Constant
 import com.zjf.clear.databinding.ActivityBatteryBinding
 import com.zjf.clear.launchResultActivity
-import com.zjf.clear.ui.viewmodel.PhoneBoosterViewModel
+import com.zjf.clear.ui.viewmodel.SimpleCompleteViewModel
 import kotlinx.coroutines.flow.collect
 
 /**
  * create by colin
  * 2022/8/24
  */
-class BatteryActivity : BaseActivity<ActivityBatteryBinding, PhoneBoosterViewModel>() {
+class BatteryActivity : BaseActivity<ActivityBatteryBinding, SimpleCompleteViewModel>() {
 
-    override val mViewModel: PhoneBoosterViewModel by viewModels()
+    override val mViewModel: SimpleCompleteViewModel by viewModels()
 
 
     override fun setupView() {

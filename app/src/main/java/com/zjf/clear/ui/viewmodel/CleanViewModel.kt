@@ -1,9 +1,8 @@
 package com.zjf.clear.ui.viewmodel
 
 import android.app.Application
-import com.zjf.clear.data.GlobalRepository
+import com.zjf.clear.data.repository.GlobalRepository
 import com.zjf.clear.ui.state.CleanUiState
-import com.zjf.clear.ui.state.PhoneBoosterUiState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -12,16 +12,16 @@ import com.beeline.common.BaseActivity
 import com.zjf.clear.data.Constant
 import com.zjf.clear.databinding.ActivityPhoneBoosterBinding
 import com.zjf.clear.launchResultActivity
-import com.zjf.clear.ui.viewmodel.PhoneBoosterViewModel
+import com.zjf.clear.ui.viewmodel.SimpleCompleteViewModel
 import kotlinx.coroutines.flow.collect
 
 /**
  * create by colin
  * 2022/8/14
  */
-class PhoneBoosterAct : BaseActivity<ActivityPhoneBoosterBinding, PhoneBoosterViewModel>() {
+class PhoneBoosterAct : BaseActivity<ActivityPhoneBoosterBinding, SimpleCompleteViewModel>() {
 
-    override val mViewModel: PhoneBoosterViewModel by viewModels()
+    override val mViewModel: SimpleCompleteViewModel by viewModels()
 
     private var mSet: AnimatorSet? = null
 

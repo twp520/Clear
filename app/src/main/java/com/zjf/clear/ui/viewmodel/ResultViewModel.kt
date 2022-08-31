@@ -1,7 +1,7 @@
 package com.zjf.clear.ui.viewmodel
 
 import android.app.Application
-import com.zjf.clear.data.ResultRepository
+import com.zjf.clear.data.repository.ResultRepository
 import com.zjf.clear.ui.state.ResultUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

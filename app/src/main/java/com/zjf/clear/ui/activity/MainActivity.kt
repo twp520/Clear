@@ -1,5 +1,7 @@
 package com.zjf.clear.ui.activity
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
@@ -8,6 +10,7 @@ import androidx.activity.viewModels
 import com.beeline.common.BaseActivity
 import com.beeline.common.EmptyViewModel
 import com.beeline.common.launchActivity
+import com.blankj.utilcode.util.LogUtils
 import com.zjf.clear.R
 import com.zjf.clear.databinding.ActivityMainBinding
 
@@ -58,6 +61,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, EmptyViewModel>(), View.O
             R.id.btn_cpu -> {
                 launchActivity(CPUActivity::class.java)
             }
+            R.id.btn_gallery -> {
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    launchActivity(GalleryActivity::class.java)
+                } else {
+                    requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 100)
+                }
+            }
         }
 
     }
@@ -82,5 +92,17 @@ class MainActivity : BaseActivity<ActivityMainBinding, EmptyViewModel>(), View.O
         binding.tvClean.startAnimation(scale)
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 100 && grantResults.firstOrNull() == PackageManager.PERMISSION_GRANTED) {
+            launchActivity(GalleryActivity::class.java)
+        } else {
+            LogUtils.d("Not permission")
+        }
+    }
 
 }
