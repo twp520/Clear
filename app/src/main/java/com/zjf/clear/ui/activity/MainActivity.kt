@@ -1,6 +1,7 @@
 package com.zjf.clear.ui.activity
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.view.View
 import android.view.animation.Animation
@@ -12,7 +13,9 @@ import com.beeline.common.EmptyViewModel
 import com.beeline.common.launchActivity
 import com.blankj.utilcode.util.LogUtils
 import com.zjf.clear.R
+import com.zjf.clear.data.Constant
 import com.zjf.clear.databinding.ActivityMainBinding
+import com.zjf.clear.service.ToolService
 
 class MainActivity : BaseActivity<ActivityMainBinding, EmptyViewModel>(), View.OnClickListener {
 
@@ -28,10 +31,17 @@ class MainActivity : BaseActivity<ActivityMainBinding, EmptyViewModel>(), View.O
         binding.btnCpu.setOnClickListener(this)
         binding.btnGallery.setOnClickListener(this)
         binding.homeClanBord.setOnClickListener(this)
+
+        handleJump(intent)
     }
 
     override fun setupData() {
+        startService()
+    }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        handleJump(intent)
     }
 
     override fun onResume() {
@@ -90,6 +100,32 @@ class MainActivity : BaseActivity<ActivityMainBinding, EmptyViewModel>(), View.O
         scale.repeatMode = Animation.REVERSE
         scale.duration = 1500
         binding.tvClean.startAnimation(scale)
+    }
+
+    private fun startService() {
+        val intent = Intent(this, ToolService::class.java)
+        startForegroundService(intent)
+    }
+
+    private fun handleJump(intent: Intent?) {
+        intent ?: return
+        val funcId = intent.getIntExtra("funcId", -1)
+        if (funcId < 0) return
+        intent.removeExtra("funcId")
+        when (funcId) {
+            Constant.ID_CLEAN -> {
+                binding.homeClanBord.performClick()
+            }
+            Constant.ID_BOOSTER -> {
+                binding.btnBooster.performClick()
+            }
+            Constant.ID_BATTERY -> {
+                binding.btnBattery.performClick()
+            }
+            Constant.ID_CPU -> {
+                binding.btnCpu.performClick()
+            }
+        }
     }
 
     override fun onRequestPermissionsResult(
