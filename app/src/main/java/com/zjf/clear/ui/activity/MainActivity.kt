@@ -9,19 +9,27 @@ import android.view.animation.RotateAnimation
 import android.view.animation.ScaleAnimation
 import androidx.activity.viewModels
 import com.beeline.common.BaseActivity
-import com.beeline.common.EmptyViewModel
 import com.beeline.common.launchActivity
 import com.blankj.utilcode.util.LogUtils
 import com.zjf.clear.R
 import com.zjf.clear.data.Constant
+import com.zjf.clear.data.ad.AdUtils
 import com.zjf.clear.databinding.ActivityMainBinding
 import com.zjf.clear.service.ToolService
+import com.zjf.clear.ui.viewmodel.MainViewModel
 
-class MainActivity : BaseActivity<ActivityMainBinding, EmptyViewModel>(), View.OnClickListener {
+class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), View.OnClickListener {
 
-    override val mViewModel: EmptyViewModel by viewModels()
+    override val mViewModel: MainViewModel by viewModels()
 
     override fun setupView() {
+
+        AdUtils.setNativeAdClickEnable(binding.adContainer)
+
+        AdUtils.adClickEvent.observe(this) {
+            AdUtils.setNativeAdClickEnable(binding.adContainer)
+        }
+
 
     }
 
@@ -37,6 +45,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, EmptyViewModel>(), View.O
 
     override fun setupData() {
         startService()
+        mViewModel.initMainAd(this, binding.adContainer)
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -49,6 +58,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, EmptyViewModel>(), View.O
         binding.homeClanBord.post {
             startCleanAnimated()
         }
+        mViewModel.resumeAd()
     }
 
     override fun onPause() {
@@ -58,28 +68,29 @@ class MainActivity : BaseActivity<ActivityMainBinding, EmptyViewModel>(), View.O
     }
 
     override fun onClick(v: View) {
-        when (v.id) {
-            R.id.btn_booster -> {
-                launchActivity(PhoneBoosterAct::class.java)
-            }
-            R.id.home_clan_bord -> {
-                launchActivity(CleanActivity::class.java)
-            }
-            R.id.btn_battery -> {
-                launchActivity(BatteryActivity::class.java)
-            }
-            R.id.btn_cpu -> {
-                launchActivity(CPUActivity::class.java)
-            }
-            R.id.btn_gallery -> {
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                    launchActivity(GalleryActivity::class.java)
-                } else {
-                    requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 100)
+        mViewModel.showMainInterstitialAd(v.id, R.id.home_clan_bord) {
+            when (it) {
+                R.id.btn_booster -> {
+                    launchActivity(PhoneBoosterAct::class.java)
+                }
+                R.id.home_clan_bord -> {
+                    launchActivity(CleanActivity::class.java)
+                }
+                R.id.btn_battery -> {
+                    launchActivity(BatteryActivity::class.java)
+                }
+                R.id.btn_cpu -> {
+                    launchActivity(CPUActivity::class.java)
+                }
+                R.id.btn_gallery -> {
+                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                        launchActivity(GalleryActivity::class.java)
+                    } else {
+                        requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 100)
+                    }
                 }
             }
         }
-
     }
 
     private fun startCleanAnimated() {

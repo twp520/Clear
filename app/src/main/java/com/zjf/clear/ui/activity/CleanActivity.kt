@@ -7,6 +7,7 @@ import android.view.animation.RotateAnimation
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.beeline.common.BaseActivity
+import com.zjf.clear.R
 import com.zjf.clear.data.Constant
 import com.zjf.clear.databinding.ActivityCleanBinding
 import com.zjf.clear.launchResultActivity
@@ -35,20 +36,24 @@ class CleanActivity : BaseActivity<ActivityCleanBinding, CleanViewModel>() {
             onBackPressed()
         }
 
+        lifecycleScope.launchWhenStarted {
+            mViewModel.cleanUiState.collect {
+                binding.tvUnit.text = it.unit
+                startTextAnimated(it.size)
+            }
+            mViewModel.uiState.collect {
+                if (it.isComplete) {
+                    launchResultActivity(Constant.ID_CLEAN)
+                }
+            }
+        }
+
     }
 
     override fun setupData() {
 
-        lifecycleScope.launchWhenStarted {
-            mViewModel.uiState.collect {
-                if (it.isComplete) {
-                    launchResultActivity(Constant.ID_CLEAN)
-                } else {
-                    binding.tvUnit.text = it.unit
-                    startTextAnimated(it.size)
-                }
-            }
-        }
+        mViewModel.loadWaitAd(this, getString(R.string.ad_unit_common_insert))
+
     }
 
     private fun startImageAnimated() {

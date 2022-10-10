@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.core.animation.addListener
 import androidx.lifecycle.lifecycleScope
 import com.beeline.common.BaseActivity
+import com.zjf.clear.R
 import com.zjf.clear.data.Constant
 import com.zjf.clear.databinding.ActivityPhoneBoosterBinding
 import com.zjf.clear.launchResultActivity
@@ -38,17 +39,18 @@ class PhoneBoosterAct : BaseActivity<ActivityPhoneBoosterBinding, SimpleComplete
 
     override fun setupEvent() {
 
-
-    }
-
-    override fun setupData() {
-
         lifecycleScope.launchWhenStarted {
             mViewModel.uiState.collect {
                 if (it.isComplete)
                     launchResultActivity(Constant.ID_BOOSTER)
             }
         }
+
+    }
+
+    override fun setupData() {
+
+        mViewModel.loadWaitAd(this, getString(R.string.ad_unit_common_insert))
 
     }
 

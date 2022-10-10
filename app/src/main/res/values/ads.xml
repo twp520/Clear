@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fb_id">484152213516495</string>
+    <string name="fb_token">b8f502cbbadc2eafe9722c1393f4eb8b</string>
+
+    <string name="admob_app_id">ca-app-pub-1585958321791282~3758674501</string>
+
+    <string name="ad_unit_splash">c22f201f7e4aa220</string>
+
+    <string name="ad_unit_main_native">4af577391bcc29a9</string>
+    <string name="ad_unit_main_insert">83d0a6f60d536606</string>
+    <string name="ad_unit_common_insert">795aff3e48ff8f9a</string>
+</resources>

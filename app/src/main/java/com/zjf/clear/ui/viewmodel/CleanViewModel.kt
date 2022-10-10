@@ -13,14 +13,13 @@ import kotlin.random.Random
  * create by colin
  * 2022/8/14
  */
-class CleanViewModel(app: Application) : SimpleAdViewModel(app) {
+class CleanViewModel(app: Application) : SimpleCompleteViewModel(app) {
 
     private val _uiState = MutableStateFlow(CleanUiState(0f, "MB"))
-    val uiState = _uiState.asStateFlow()
+    val cleanUiState = _uiState.asStateFlow()
 
 
     init {
-
         val until = if (GlobalRepository.isRecentInClean()) {
             Pair(200, "MB")
         } else {
@@ -31,13 +30,7 @@ class CleanViewModel(app: Application) : SimpleAdViewModel(app) {
         _uiState.update {
             it.copy(size = floatRandomNum, unit = until.second)
         }
-
-        launchNetRequest {
-            delay(6000)
-            _uiState.update {
-                it.copy(isComplete = true)
-            }
-        }
     }
+
 
 }

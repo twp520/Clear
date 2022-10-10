@@ -24,8 +24,11 @@ class WelcomeActivity : BaseActivity<ActivityWelcomeBinding, WelcomeViewModel>()
 
         lifecycleScope.launchWhenStarted {
             mViewModel.uiState.collect {
-                if (it.isInitComplete)
+                if (it.isInitComplete) {
                     launchActivity(MainActivity::class.java, finish = true)
+                } else {
+                    binding.progressBar.progress = it.progress
+                }
             }
         }
 
@@ -33,5 +36,6 @@ class WelcomeActivity : BaseActivity<ActivityWelcomeBinding, WelcomeViewModel>()
 
     override fun setupData() {
 
+        mViewModel.initAd(this)
     }
 }

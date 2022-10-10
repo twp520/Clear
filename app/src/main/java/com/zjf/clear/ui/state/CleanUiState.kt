@@ -7,5 +7,4 @@ package com.zjf.clear.ui.state
 data class CleanUiState(
     val size: Float,
     val unit: String,
-    val isComplete: Boolean = false
 )

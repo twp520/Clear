@@ -4,6 +4,7 @@ import android.graphics.drawable.AnimationDrawable
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.beeline.common.BaseActivity
+import com.zjf.clear.R
 import com.zjf.clear.data.Constant
 import com.zjf.clear.databinding.ActivityBatteryBinding
 import com.zjf.clear.launchResultActivity
@@ -31,10 +32,6 @@ class BatteryActivity : BaseActivity<ActivityBatteryBinding, SimpleCompleteViewM
 
     override fun setupEvent() {
 
-    }
-
-    override fun setupData() {
-
         lifecycleScope.launchWhenStarted {
             mViewModel.uiState.collect {
                 if (it.isComplete) {
@@ -43,6 +40,11 @@ class BatteryActivity : BaseActivity<ActivityBatteryBinding, SimpleCompleteViewM
             }
         }
 
+    }
+
+    override fun setupData() {
+
+        mViewModel.loadWaitAd(this, getString(R.string.ad_unit_common_insert))
     }
 
 

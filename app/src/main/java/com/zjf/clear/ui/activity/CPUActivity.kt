@@ -37,10 +37,6 @@ class CPUActivity : BaseActivity<ActivityCpuBinding, SimpleCompleteViewModel>() 
 
     override fun setupEvent() {
 
-    }
-
-    override fun setupData() {
-
         lifecycleScope.launchWhenStarted {
 
             mViewModel.uiState.collect {
@@ -48,6 +44,12 @@ class CPUActivity : BaseActivity<ActivityCpuBinding, SimpleCompleteViewModel>() 
                     launchResultActivity(Constant.ID_CPU)
             }
         }
+
+    }
+
+    override fun setupData() {
+
+        mViewModel.loadWaitAd(this, getString(R.string.ad_unit_common_insert))
     }
 
 
